@@ -1,0 +1,39 @@
+enum TypeProducts {
+  CLEANING
+  FOOD
+  DRINK
+  OTHERS
+}
+
+type Product {
+  id: ID!
+  user: User!
+  name: String!
+  type: TypeProducts!
+  qty: Int!
+}
+
+input FilterProducts {
+  userName: String
+  name: String
+  type: TypeProducts
+}
+
+input ProductInput {
+  user_id: ID!
+  name: String!
+  type: TypeProducts!
+  qty: Int!
+}
+
+type Query {
+  products: [Product!]!
+  filteredProducts(filter: FilterProducts!): [Product!]!
+  product(id: ID!): Product
+}
+
+type Mutation {
+  createProduct(data: ProductInput!): Product!
+  updateProduct(id: ID!, data: ProductInput!): Product!
+  deleteProduct(id: ID!): Product!
+}
