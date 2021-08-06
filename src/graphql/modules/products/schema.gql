@@ -26,6 +26,12 @@ input ProductInput {
   qty: Int!
 }
 
+input ProductUpdateInput {
+  name: String
+  type: TypeProducts
+  qty: Int
+}
+
 type Query {
   products: [Product!]!
   filteredProducts(filter: FilterProducts!): [Product!]!
@@ -34,6 +40,6 @@ type Query {
 
 type Mutation {
   createProduct(data: ProductInput!): Product!
-  updateProduct(id: ID!, data: ProductInput!): Product!
+  updateProduct(id: ID!, data: ProductUpdateInput!): Product!
   deleteProduct(id: ID!): Product!
 }

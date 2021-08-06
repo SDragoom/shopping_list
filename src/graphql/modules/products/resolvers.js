@@ -1,9 +1,6 @@
 import Product from '../../../models/Product'
 import User from '../../../models/User'
 
-import path from 'path'
-
-
 export default  {
   Product: {
     user: (product) => User.findById(product.user_id)
@@ -26,6 +23,12 @@ export default  {
       const { _id: id } = await Product.create({ ...data })
 
       return { id, ...data }
-    }
+    },
+    updateProduct: (_, { id, data }) => Product.findByIdAndUpdate(id, data, { new: true, useFindAndModify: true }),
+    deleteProduct: async (_, { id }) => {
+      const product = await Product.findById(id)
+      await Product.findByIdAndDelete(id, { useFindAndModify: true })
+      return { id: product._id, ...product._doc }
+    },
   }
 }
