@@ -11,9 +11,6 @@ In the https://github.com/SDragoom/shopping_list click on Code then choose how y
 #### in the terminal of your IDE with the project open =>
 
 - npm install
-- npm init
-- npm install graphql apollo-server
-- npm install nodemon -D
-- npm install mongoose
-- npm install add @babel/core @babel/cli @babel/preset-env @babel/node -D
+- npm run dev
 
+#### - Download the MongoDB server to create a DB, you can download at the official page or create a Container with docker, connect to the mongo with the archive server.js u need just confirm if the port from local host is correct 
